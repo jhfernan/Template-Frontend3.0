@@ -15,6 +15,10 @@ module.exports = {
 		]
 	},
 
+	auth: {
+		// Options
+	},
+
 	axios: {
 		baseURL: config.baseURL,
 		// credentials: true,
