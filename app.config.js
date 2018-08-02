@@ -1,9 +1,11 @@
 let config = {
 	auth: {
 		cookie: {
-			options: { path: '/' },
-			prefix: 'auth.',
-			secure: false
+			options: {
+				path: '/',
+				secure: false
+			},
+			prefix: 'auth'
 		},
 		localStorage: false,
 		redirect: {
@@ -11,16 +13,15 @@ let config = {
 			logout: '/',
 			home: '/home',
 		},
-		// resetOnError: true,
+		resetOnError: true,
 		strategies: {
 			local: {
 				endpoints: {
-					login: { url: '/api/authenticate', method: 'post', propertyName: 'data.token' },
+					login: { url: '/api/authenticate', method: 'post', propertyName: 'token' },
 					logout: false,
-					user: { url: '/api/authenticate', method: 'get', propertyName: 'data.user' }
+					user: { url: '/api/authenticate', method: 'get', propertyName: 'user' }
 				},
 				tokenRequired: true,
-				tokenType: 'bearer'
 			}
 		}
 	},
@@ -31,7 +32,7 @@ let config = {
 }
 
 if (process.env.NODE_ENV == 'production') {
-	config.auth.secure = true
+	config.auth.cookie.options.secure = true
 	config.axios.baseURL = process.env.BASE_URL
 }
 

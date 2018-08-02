@@ -15,30 +15,7 @@ module.exports = {
 		]
 	},
 
-	auth: {
-		cookie: {
-			options: { path: '/' },
-			prefix: 'auth.',
-			secure: false
-		},
-		// localStorage: false,
-		redirect: {
-			login: '/',
-			logout: '/',
-			home: '/home',
-		},
-		// resetOnError: true,
-		strategies: {
-			local: {
-				endpoints: {
-					login: { url: '/api/authenticate', method: 'post', propertyName: 'data.token' },
-					logout: false,
-					user: { url: '/api/authenticate', method: 'get', propertyName: 'data.user' }
-				},
-				tokenRequired: true,
-			}
-		}
-	},
+	auth: config.auth,
 	axios: config.axios,
 
 	css: [
