@@ -26,8 +26,8 @@ module.exports = {
 	loading: { color: '#3B8070' },
 
 	modules: [
-		'@nuxtjs/axios',
 		'@nuxtjs/auth',
+		'@nuxtjs/axios',
 	],
 
 	plugins: [

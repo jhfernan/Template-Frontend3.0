@@ -25,7 +25,6 @@
 
 <script>
 export default {
-	middleware: 'auth',
 	asyncData ({ app, error }) {
 		return app.$axios.$get('/api/v1/users')
 		.then(res => {
@@ -34,6 +33,7 @@ export default {
 		.catch(err => {
 			error({ statusCode: err.status, message: err.message })
 		})
-	}
+	},
+	middleware: ['auth', 'mustBeAdmin'],
 }
 </script>
