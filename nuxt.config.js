@@ -16,14 +16,30 @@ module.exports = {
 	},
 
 	auth: {
-		// Options
+		cookie: {
+			options: { path: '/' },
+			prefix: 'auth.',
+			secure: false
+		},
+		// localStorage: false,
+		redirect: {
+			login: '/',
+			logout: '/',
+			home: '/home',
+		},
+		// resetOnError: true,
+		strategies: {
+			local: {
+				endpoints: {
+					login: { url: '/api/authenticate', method: 'post', propertyName: 'data.token' },
+					logout: false,
+					user: { url: '/api/authenticate', method: 'get', propertyName: 'data.user' }
+				},
+				tokenRequired: true,
+			}
+		}
 	},
-
-	axios: {
-		baseURL: config.baseURL,
-		// credentials: true,
-		// progress: true,
-	},
+	axios: config.axios,
 
 	css: [
 		'@/assets/style/app.styl',
@@ -34,7 +50,7 @@ module.exports = {
 
 	modules: [
 		'@nuxtjs/axios',
-		['cookie-universal-nuxt', { alias: 'cookies' }],
+		'@nuxtjs/auth',
 	],
 
 	plugins: [

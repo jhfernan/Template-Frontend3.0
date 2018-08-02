@@ -21,7 +21,7 @@ export default {
 	middleware: 'auth',
 	data () {
 		return {
-			user: this.$store.state.user
+			user: this.$auth.user
 		}
 	}
 }

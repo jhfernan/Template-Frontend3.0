@@ -7,7 +7,7 @@
 						<v-toolbar-title>Login form</v-toolbar-title>
 					</v-toolbar>
 					<v-card-text>
-						<v-alert class="mb-3" :value="err" type="error">
+						<v-alert class="mb-4" :value="err" type="error">
 							{{ err }}
 						</v-alert>
 						<v-form ref="form" @submit.prevent="login">
@@ -39,20 +39,18 @@ export default {
 		}
 	},
 	methods: {
-		async login () {
-			this.err = null
+		async login() {
 			try {
-				// await this.$store.dispatch('login', this.form)
-				console.log(this.form)
-				this.$refs.form.reset()
+				await this.$auth.loginWith('local', { data: this.form })
 			} catch (err) {
-				if (err.response.status && err.response.data) {
+				if (err.response) {
 					this.err = `Error ${err.response.status}: ${err.response.data}`
 				} else {
 					this.err = 'There was an error during the log in process'
 				}
 			}
-		}
+		},
 	},
+	middleware: 'guest'
 }
 </script>
