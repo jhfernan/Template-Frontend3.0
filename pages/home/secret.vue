@@ -16,7 +16,7 @@
 			<v-card-text>
 				<h1 class="title mb-2">All Users</h1>
 				<div :key="i" v-for="(user, i) in users">
-					<p>ID# {{ user.id }}: {{ user.name }}</p>
+					<p>ID# {{ user._id }}: {{ user.name }}</p>
 				</div>
 			</v-card-text>
 		</v-card>
@@ -25,15 +25,20 @@
 
 <script>
 export default {
-	asyncData ({ app, error }) {
-		return app.$axios.$get('/api/v1/users')
+	data () {
+		return {
+			users: []
+		}
+	},
+	middleware: ['auth', 'mustBeAdmin'],
+	mounted () {
+		return this.$axios.$get('/api/v1/users')
 		.then(res => {
-			return { users: res }
+			return this.users = res
 		})
 		.catch(err => {
 			error({ statusCode: err.status, message: err.message })
 		})
-	},
-	middleware: ['auth', 'mustBeAdmin'],
+	}
 }
 </script>
