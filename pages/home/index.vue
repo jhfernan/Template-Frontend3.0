@@ -8,7 +8,11 @@
 						<span class="subheading">Welcome {{ user.name }}</span>
 						<v-divider class="my-3"></v-divider>
 						<div class="title mb-3">your id is {{ user.id }}</div>
-						<v-btn class="mx-0" color="primary" nuxt router to="/home/secret">See more</v-btn>
+						<v-layout>
+							<v-btn class="mx-0" color="accent" nuxt router to="/home/secret">See Secret Page</v-btn>
+							<v-spacer></v-spacer>
+							<v-btn class="mx-0" color="primary" nuxt router to="/home/chat">Go to Chat Application Page</v-btn>
+						</v-layout>
 					</v-flex>
 				</v-layout>
 			</v-container>
