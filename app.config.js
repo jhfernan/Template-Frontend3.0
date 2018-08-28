@@ -9,8 +9,8 @@ let config = {
 		},
 		localStorage: false,
 		redirect: {
-			login: '/',
-			logout: '/',
+			login: '/login',
+			logout: '/login',
 			home: '/home',
 		},
 		resetOnError: true,
