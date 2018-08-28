@@ -35,7 +35,7 @@ let config = {
 if (process.env.NODE_ENV == 'production') {
 	config.auth.cookie.options.secure = true
 	config.axios.baseURL = process.env.BASE_URL
-	config.socket = `wss://${ process.env.BASE_URL }`
+	config.socket = 'wss://https://example-cb-api.herokuapp.com/'
 }
 
 module.exports = config
