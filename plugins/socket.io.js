@@ -3,6 +3,7 @@ const config = require('../app.config')
 
 const socket = io.connect(config.socket, {
 	secure: true,
+	reconnect: true,
 	rejectUnauthorized: false
 })
 
