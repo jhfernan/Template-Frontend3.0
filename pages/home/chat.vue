@@ -5,7 +5,7 @@
 				<div class="chatArea">
 					<ul class="messages" ref="messages">
 						<li class="message" :key="i" v-for="(message, i) in messages">
-							<strong>{{ message.author }}</strong>: {{ message.text }}
+							<strong class="text-capitalize">{{ message.author }}</strong>: {{ message.text }}
 						</li>
 					</ul>
 				</div>
@@ -20,7 +20,7 @@ import socket from '~/plugins/socket.io.js'
 
 export default {
 	beforeMount() {
-		socket.on('new-message', (message) => {
+		socket.on('newMessage', message => {
 			this.messages.push(message)
 		})
 	},
@@ -33,15 +33,17 @@ export default {
 	},
 	layout: 'empty',
 	methods: {
-		sendMessage() {
-			if (!this.message.trim()) return
-			let message = {
-				author: this.user.name,
-				text: this.message.trim()
-			}
-			this.messages.push(message)
-			this.message = ''
-			socket.emit('send-message', message)
+		async sendMessage() {
+			await this.$axios.$post('/api/v1/messages', {
+					author: this.user.name,
+					text: this.message.trim()
+				})
+				.then(res => {
+					this.message = ''
+				})
+				.catch(err => {
+					console.error(err)
+				})
 		},
 		// scrollToBottom() {
 		// 	this.$nextTick(() => {
@@ -133,5 +135,9 @@ ul {
 	position: absolute;
 	right: 0;
 	width: 100%;
+}
+
+.text-capitalize {
+	text-transform: capitalize;
 }
 </style>
