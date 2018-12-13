@@ -1,23 +1,22 @@
-# frontend3.0
+# frontend 3.0
+_Frontend Auth system to consume external API_
 
-> Frontend Auth system to consume external API
+_Project Description_:
+This project was built on a simple premise, a need I saw to build something nobody had a good tutorial on.
 
-## Build Setup
+Instead of building your api and frontend all in one, the API gets decoupled into it's own server.
+The API is able to accept requests from specific apps or mobile apps.
 
-``` bash
-# install dependencies
-$ npm install # Or yarn install
+To login, use the following credentials:
 
-# serve with hot reload at localhost:3000
-$ npm run dev
+username: admin
+pass: admin
 
-# build for production and launch server
-$ npm run build
-$ npm start
+or
 
-# generate static project
-$ npm run generate
-```
+username: noadmin
+pass: noadmin
 
-For detailed explanation on how things work, checkout the [Nuxt.js docs](https://github.com/nuxt/nuxt.js).
 
+## Update
+Ported chat example from Nuxt.js examples and got it working with the app
