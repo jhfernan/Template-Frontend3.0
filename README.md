@@ -1,4 +1,4 @@
-# frontend 3.0
+# Frontend 3.0
 _Frontend Auth system to consume external API_
 
 _Project Description_:
@@ -10,11 +10,13 @@ The API is able to accept requests from specific apps or mobile apps.
 To login, use the following credentials:
 
 username: admin
+
 pass: admin
 
 or
 
 username: noadmin
+
 pass: noadmin
 
 
